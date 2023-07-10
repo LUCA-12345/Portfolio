@@ -1,0 +1,25 @@
+.name {
+  position: relative;
+  font-family: "Vandalism", "Courier New";
+  font-size: 50px;
+  padding: 15px;
+  background-color: rgba(160, 160, 160, 0.031);
+  border: solid var(--border-color);
+  color: var(--darker-grey);
+}
+
+.name::before {
+  background: hsl(45, 98%, 62%);
+  content: "";
+  inset: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.5s ease-in-out;
+  z-index: -1;
+}
+
+.name:hover::before {
+  transform: scaleX(1);
+  transform-origin: center;
+}

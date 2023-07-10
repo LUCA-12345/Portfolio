@@ -1,38 +1,717 @@
-.App {
-  text-align: center;
+.root body,
+div,
+p {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  /* -------------------- LIGHT THEME ---------------------- */
+  --primary-bg-color: rgba(160, 160, 160, 0.15);
+  --secondary-bg-color: rgba(160, 160, 160, 0.248);
+  --border-color: rgba(196, 196, 196, 0.055);
+  --faded-grey: rgba(93, 93, 93, 0.331);
+  --darker-grey: rgba(0, 0, 0, 0.529);
+  --non-transparents-grey: rgb(244, 244, 244);
+  /* -------------------- DARK THEME ---------------------- */
+  --primary-bg-color-dark: rgb(46, 48, 47);
+  /* "rgb(55,58,64)"  "rgb(45,48,46)" "rgb(64,65,78)" */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ------------------- CENTER STAGE  --------------------- */
+
+#main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px 10px 20px;
+  background-color: var(--primary-bg-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.headerMiddle {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.headerMiddle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
+nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+nav ul li {
+  margin: 10px;
+}
+
+a {
+  color: var(--darker-grey);
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-size: 40% 0.1em;
+  background-position: 10% 100%, 90% 100%;
+}
+
+audio {
+  transform: scale(0.75);
+}
+
+/* ------------------- PYRAMIDS --------------------- */
+
+.beHeader {
+  position: relative;
+}
+
+.text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0% 0% 0% 0.5%;
+  overflow: hidden;
+
+  padding-top: 20px;
+}
+
+.text p {
+  font-family: "Vandalism", "Courier New";
+  color: var(--faded-grey);
+  font-size: 12;
+  margin: 0%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.pyramid-spin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  -webkit-perspective: 1000px;
+  -webkit-perspective-origin: 50% 100px;
+  transform: scale(0.5);
+}
+.pyramid-axis {
+  position: relative;
+  width: 200px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-animation: spin 5s infinite linear;
+}
+
+.pyramid-wall {
+  position: absolute;
+  border: 100px solid transparent;
+}
+
+.F {
+  bottom: -20px;
+  border-bottom: 200px solid var(--primary-bg-color);
+  -webkit-transform: translateZ(25px) rotateX(30deg);
+}
+.B {
+  bottom: -20px;
+  border-bottom: 200px solid var(--secondary-bg-color);
+  -webkit-transform: translateZ(-25px) rotateY(180deg) rotateX(30deg);
+}
+.L {
+  bottom: -20px;
+  left: 75px;
+  border-bottom: 200px solid rgba(196, 196, 196, 0.098);
+  -webkit-transform: rotateY(270deg) translateX(-100px) rotateX(30deg);
+  -webkit-transform-origin: center left;
+}
+.R {
+  bottom: -40px;
+  right: 150px;
+  border-bottom: 200px solid var(--primary-bg-color);
+  -webkit-transform: rotateY(-270deg) translateX(100px) rotateX(30deg);
+  -webkit-transform-origin: top right;
+}
+.Bottom {
+  width: 200px;
+  height: 200px;
+  background-color: var(--primary-bg-color);
+  -webkit-transform: rotateX(90deg) translateY(100px);
+  -webkit-transform-origin: bottom center;
+}
+
+@-webkit-keyframes spin {
   from {
-    transform: rotate(0deg);
+    -webkit-transform: rotateY(0);
   }
   to {
-    transform: rotate(360deg);
+    -webkit-transform: rotateY(360deg);
   }
 }
+
+/* ------------------- MAIN PARENT --------------------- */
+
+.parent {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+/* -------------------- TOP PATTERN -------------------- */
+
+.dividerOne {
+  position: relative;
+  z-index: 0;
+  background-color: var(--secondary-bg-color);
+  opacity: 0.4;
+  background-image: linear-gradient(
+      30deg,
+      rgba(160, 160, 160, 0.248) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(160, 160, 160, 0.248) 87.5%,
+      rgba(160, 160, 160, 0.248)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(160, 160, 160, 0.248) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(160, 160, 160, 0.248) 87.5%,
+      rgba(160, 160, 160, 0.248)
+    ),
+    linear-gradient(
+      30deg,
+      rgba(160, 160, 160, 0.248) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(160, 160, 160, 0.248) 87.5%,
+      rgba(160, 160, 160, 0.248)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(160, 160, 160, 0.248) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(160, 160, 160, 0.248) 87.5%,
+      rgba(160, 160, 160, 0.248)
+    ),
+    linear-gradient(
+      60deg,
+      rgba(160, 160, 160, 0.248) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      rgba(160, 160, 160, 0.248) 75%,
+      rgba(160, 160, 160, 0.248)
+    ),
+    linear-gradient(
+      60deg,
+      rgba(160, 160, 160, 0.248) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      rgba(160, 160, 160, 0.248) 75%,
+      rgba(160, 160, 160, 0.248)
+    );
+  background-size: 20px 35px;
+  background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+  --mask: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0,
+      rgba(0, 0, 0, 1) 40%,
+      rgba(0, 0, 0, 0) 95%,
+      rgba(0, 0, 0, 0) 0
+    )
+    100% 50% / 100% 100% repeat-x;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  height: 580px;
+  width: 100%;
+}
+
+/* -------------------- CONTENT ------------------------ */
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 10px 20px;
+}
+
+/* ----- FIRST ROW START ----- */
+
+.displayOne {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding: 60px;
+}
+
+.dispOne {
+  display: flex;
+  justify-content: center;
+  grid-column: 2;
+  grid-row: 1;
+  padding: 20px;
+  border: solid var(--secondary-bg-color);
+  background-color: rgb(247, 247, 247);
+}
+
+.dispOne img {
+  height: 600px;
+  width: 1200px;
+  padding: 60px;
+}
+
+.portHolesOne {
+  display: grid;
+  /* grid-template-columns: 0.75fr 1.5fr 0.75fr;
+  grid-template-rows: 0.5fr 1fr 0.25fr; */
+}
+
+.portHolesOne .portOne {
+  /*   
+    position: relative;
+    z-index: 1;
+    */
+  display: flex;
+  justify-content: center;
+  grid-column: 1;
+  grid-row: 2;
+  padding: 20px;
+}
+
+.portHolesOne .portOne img {
+  height: 300px;
+  width: 300px;
+  padding: 60px;
+  border-radius: 50%;
+  box-shadow: 3px 3px var(--primary-bg-color),
+    -1em 0 0.4em var(--secondary-bg-color);
+  background: repeating-radial-gradient(
+    circle,
+    var(--secondary-bg-color),
+    transparent 20%
+  );
+  background-size: 2em 2em;
+  background-color: #ffffff;
+  opacity: 1;
+  transform: scale(0.75);
+}
+
+.portHolesOne .portTwo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  grid-column: 2;
+  grid-row: 2;
+  padding: 20px;
+}
+
+.portHolesOne .portTwo p {
+  font-family: "Roboto Mono", monospace;
+  margin: 5px;
+  line-height: 25px;
+}
+
+.portHolesOne .portThree {
+  display: flex;
+  justify-content: center;
+  grid-column: 3;
+  grid-row: 2;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.portHolesOne .portThree img {
+  height: 300px;
+  width: 300px;
+  padding: 60px;
+  border-radius: 50%;
+  box-shadow: 3px 3px var(--primary-bg-color),
+    -1em 0 0.4em var(--secondary-bg-color);
+  background: repeating-radial-gradient(
+    circle,
+    var(--secondary-bg-color),
+    transparent 20%
+  );
+  background-size: 2em 2em;
+  background-color: #ffffff;
+  opacity: 1;
+  transform: scale(0.75);
+}
+
+.x {
+  background: radial-gradient(circle, transparent 25%, #ffffff 26%),
+    linear-gradient(
+      45deg,
+      transparent 46%,
+      var(--primary-bg-color) 47%,
+      var(--primary-bg-color) 52%,
+      transparent 53%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 46%,
+      var(--primary-bg-color) 47%,
+      var(--primary-bg-color) 52%,
+      transparent 53%
+    );
+  background-size: 2em 2em;
+  background-color: #ffffff;
+  opacity: 1;
+}
+
+.xOne {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.xTwo {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.xThree {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+/* ----- FIRST ROW END ----- */
+
+/* ----- SECOND ROW START ----- */
+
+.displayTwo {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding: 60px;
+}
+
+.displayTwo .dispOne {
+  display: flex;
+  justify-content: center;
+  grid-column: 2;
+  grid-row: 1;
+  padding: 20px;
+  border: solid var(--secondary-bg-color);
+  background-color: rgb(247, 247, 247);
+}
+
+.displayTwo .dispOne img {
+  height: 600px;
+  width: 1200px;
+  padding: 60px;
+}
+
+.portHolesTwo {
+  display: grid;
+  grid-template-columns: 0.75fr 1.5fr 0.75fr;
+  grid-template-rows: 0fr 1fr 0.25fr;
+}
+
+.portHolesTwo .portOne {
+  /*   
+      position: relative;
+      z-index: 1;
+      */
+  display: flex;
+  justify-content: center;
+  grid-column: 1;
+  grid-row: 2;
+  padding: 20px;
+}
+
+.portHolesTwo .portOne img {
+  height: 300px;
+  width: 300px;
+  padding: 60px;
+  border-radius: 50%;
+  box-shadow: 3px 3px var(--primary-bg-color),
+    -1em 0 0.4em var(--secondary-bg-color);
+  background: repeating-radial-gradient(
+    circle,
+    var(--secondary-bg-color),
+    transparent 20%
+  );
+  background-size: 2em 2em;
+  background-color: #ffffff;
+  opacity: 1;
+  transform: scale(0.75);
+}
+
+.portHolesTwo .portTwo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  grid-column: 2;
+  grid-row: 2;
+  padding: 20px;
+}
+
+.portHolesTwo .portTwo p {
+  font-family: "Roboto Mono", monospace;
+  margin: 5px;
+  line-height: 25px;
+}
+
+.portHolesTwo .portThree {
+  display: flex;
+  justify-content: center;
+  grid-column: 3;
+  grid-row: 2;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.portHolesTwo .portThree img {
+  height: 300px;
+  width: 300px;
+  padding: 60px;
+  border-radius: 50%;
+  box-shadow: 3px 3px var(--primary-bg-color),
+    -1em 0 0.4em var(--secondary-bg-color);
+  background: repeating-radial-gradient(
+    circle,
+    var(--secondary-bg-color),
+    transparent 20%
+  );
+  background-size: 2em 2em;
+  background-color: #ffffff;
+  opacity: 1;
+  transform: scale(0.75);
+}
+
+.x {
+  background: radial-gradient(circle, transparent 25%, #ffffff 26%),
+    linear-gradient(
+      45deg,
+      transparent 46%,
+      var(--primary-bg-color) 47%,
+      var(--primary-bg-color) 52%,
+      transparent 53%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 46%,
+      var(--primary-bg-color) 47%,
+      var(--primary-bg-color) 52%,
+      transparent 53%
+    );
+  background-size: 2em 2em;
+  background-color: #ffffff;
+  opacity: 1;
+}
+
+.xOne {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.xTwo {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.xThree {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+/* ----- SECOND ROW END ----- */
+
+.dispTwo {
+  display: flex;
+  justify-content: center;
+  grid-column: 1;
+  grid-row: 1;
+  padding: 20px;
+}
+
+.dispTwo img {
+  height: 300px;
+  width: 600px;
+  padding: 60px;
+}
+
+.dispThree {
+  display: flex;
+  justify-content: center;
+  grid-column: 3;
+  grid-row: 1;
+  padding: 20px;
+}
+
+.dispThree img {
+  height: 300px;
+  width: 600px;
+  padding: 60px;
+}
+
+.switchBox {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  height: 38px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 0px 10px 0px 10px;
+}
+
+.arrowPrev {
+  margin-top: 9px;
+}
+.arrowNext {
+  margin-top: 9px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* -------------------- PORT HOLES -------------------- */
+
+/* -------------------- BOTTOM PATTERN -------------------- */
+
+.dividerTwo {
+  position: relative;
+  z-index: 0;
+
+  background-color: var(--secondary-bg-color);
+  opacity: 0.4;
+  background-image: linear-gradient(
+      30deg,
+      rgba(160, 160, 160, 0.248) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(160, 160, 160, 0.248) 87.5%,
+      rgba(160, 160, 160, 0.248)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(160, 160, 160, 0.248) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(160, 160, 160, 0.248) 87.5%,
+      rgba(160, 160, 160, 0.248)
+    ),
+    linear-gradient(
+      30deg,
+      rgba(160, 160, 160, 0.248) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(160, 160, 160, 0.248) 87.5%,
+      rgba(160, 160, 160, 0.248)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(160, 160, 160, 0.248) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(160, 160, 160, 0.248) 87.5%,
+      rgba(160, 160, 160, 0.248)
+    ),
+    linear-gradient(
+      60deg,
+      rgba(160, 160, 160, 0.248) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      rgba(160, 160, 160, 0.248) 75%,
+      rgba(160, 160, 160, 0.248)
+    ),
+    linear-gradient(
+      60deg,
+      rgba(160, 160, 160, 0.248) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      rgba(160, 160, 160, 0.248) 75%,
+      rgba(160, 160, 160, 0.248)
+    );
+  background-size: 20px 35px;
+  background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+  --mask: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0,
+      rgba(0, 0, 0, 1) 40%,
+      rgba(0, 0, 0, 0) 95%,
+      rgba(0, 0, 0, 0) 0
+    )
+    100% 50% / 100% 100% repeat-x;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  height: 580px;
+  width: 100%;
+  transform: rotate(180deg);
+}
+
+.dividerTwo pre {
+  display: flex;
+  justify-content: center;
+  transform: rotate(180deg);
+}
+
+/* ---------------------------------------- */
